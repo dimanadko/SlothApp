@@ -1,0 +1,3 @@
+rootProject.name = 'SlothApp'
+
+include ':app'
