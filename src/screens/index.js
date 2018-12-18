@@ -1,5 +1,7 @@
-export * from './ScheduleFormScreen'
-export * from './ScheduleNavigationScreen'
-export * from './ScheduleScreen'
-export * from './TaskFormScreen'
-export * from './WelcomeScreen'
+import WelcomeScreen from './WelcomeScreen'
+import ScheduleFormScreen from './ScheduleFormScreen'
+import ScheduleNavigationScreen from './ScheduleNavigationScreen'
+import ScheduleScreen from './ScheduleScreen'
+import TaskFormScreen from './TaskFormScreen'
+
+export {WelcomeScreen, ScheduleFormScreen, ScheduleNavigationScreen, ScheduleScreen, TaskFormScreen}
