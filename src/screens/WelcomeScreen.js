@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Container, Text } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Image, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
@@ -12,7 +13,8 @@ class WelcomeScreen extends Component {
   }
   onSwipeUp = () => {
     this.setState({myText: 'You swiped up!'});
-  }
+    Actions.scheduleNavigationScreen();
+  };
 
   render() {
         return (

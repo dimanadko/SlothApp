@@ -17,11 +17,11 @@ export default class App extends Component{
     return (
       <Router>
         <Stack key="root">
-          <Scene key="WelcomeScreen" component={WelcomeScreen} title="WelcomeScreen"/>
-          <Scene key="ScheduleNavigationScreen" component={ScheduleNavigationScreen} title="ScheduleNavigationScreen"/>
-          <Scene key="ScheduleFormScreen" component={ScheduleFormScreen} title="ScheduleFormScreen"/>
-          <Scene key="TaskFormScreen" component={TaskFormScreen} title="TaskFormScreen"/>
-          <Scene key="ScheduleScreen" component={ScheduleScreen} title="ScheduleScreen"/>
+          <Scene key="welcomeScreen" component={WelcomeScreen} title="WelcomeScreen"/>
+          <Scene key="scheduleNavigationScreen" component={ScheduleNavigationScreen} title="ScheduleNavigationScreen"/>
+          <Scene key="scheduleFormScreen" component={ScheduleFormScreen} title="ScheduleFormScreen"/>
+          <Scene key="taskFormScreen" component={TaskFormScreen} title="TaskFormScreen"/>
+          <Scene key="scheduleScreen" component={ScheduleScreen} title="ScheduleScreen"/>
         </Stack>
       </Router>
     );
