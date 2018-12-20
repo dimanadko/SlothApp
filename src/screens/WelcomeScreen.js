@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Container, Text } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import { StyleSheet, Image, View } from 'react-native';
-import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 class WelcomeScreen extends Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class WelcomeScreen extends Component {
             onSwipeUp={this.onSwipeUp}
           >
             <Container>
-
                 <View style={styles.container}>
                   <View style={styles.logoContainer}>
                     <Image

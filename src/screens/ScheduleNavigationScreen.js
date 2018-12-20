@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import { Container, Accordion, Text, Button, Icon, Fab } from "native-base";
+import { Container, Accordion, Text, Button, Icon, Fab, Title, Header } from "native-base";
 import {StyleSheet, View } from "react-native";
 import { connect } from 'react-redux'
 import Modal from "react-native-modal";
+import { Actions } from 'react-native-router-flux';
+
 
 import { CreateScheduleCard } from '../components';
-import Actions from '../actions'
+import ReduxActions from '../actions'
 
-const addScheduleAction = Actions.addScheduleAction;
+const addScheduleAction = ReduxActions.addScheduleAction;
 
 
 
@@ -29,14 +31,16 @@ class ScheduleNavigationScreen extends Component {
   };
 
     _renderContent = ({content}) => {
+      const { name, description } = content;
       return (
         <View style={styles.accordionContent}>
           <Text
             style={{flex: 6}}
           >
-            {content}
+            {description}
           </Text>
           <Button
+            onPress={()=>Actions.scheduleScreen({ data: description, title: name })}
             style={{flex: 1, justifyContent: 'center'}}
           >
             <Icon name='arrow-forward' />
@@ -46,9 +50,14 @@ class ScheduleNavigationScreen extends Component {
 
     render() {
         const { scheduleData } = this.props;
-        const dataArray = scheduleData.map(({ name, description }) => ({title: name, content: description}));
+        const dataArray = scheduleData.map(({ name, description }) => ({title: name, content: {name, description}}));
         return (
           <Container style={{flex:1}}>
+            <Header>
+              <Title>
+                ScheduleNavigationScreen
+              </Title>
+            </Header>
             <Accordion dataArray={dataArray} renderContent={this._renderContent} />
             <Fab
               containerStyle={{ }}

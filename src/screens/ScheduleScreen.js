@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
+import { Text, Title } from 'native-base';
+
 
 class ScheduleScreen extends Component {
     render() {
+        const data = this.props.data || 'No Data';
         return (
-            <Text>ScheduleScreen</Text>
+            <View>
+                <Text>{data}</Text>
+            </View>
     )
         ;
     }
