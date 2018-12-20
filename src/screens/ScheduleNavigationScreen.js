@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import { Container, Content, Accordion, Text, Button, Icon, Fab } from "native-base";
-import {StyleSheet, View } from "react-native";
-import { Actions } from 'react-native-router-flux';
+import { Container, Content, Accordion, Text, Button, Icon, Fab, Body, Card, CardItem } from "native-base";
+import {StyleSheet, View, Dimensions } from "react-native";
+import Modal from "react-native-modal";
+
+import { CreateScheduleCard } from '../components';
 
 const dataArray = [
     { title: "First Element", content: "Lorem ipsum dolor sit amet" },
@@ -10,6 +12,21 @@ const dataArray = [
 ];
 
 class ScheduleNavigationScreen extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isModalVisible: false,
+      }
+    }
+
+    handleAdditionSubmit = ({endDate, startDate, name, description }) => {
+      this._toggleModal();
+      console.log(endDate, startDate, name, description)
+    };
+
+  _toggleModal = () => {
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  };
 
     _renderContent = ({content}) => {
       return (
@@ -27,25 +44,19 @@ class ScheduleNavigationScreen extends Component {
         </View>
       )};
 
-    handleAdd = () => {
-      Actions.scheduleFormScreen()
-    };
-
     render() {
         return (
-          <Container>
-              <Content padder>
-                <View style={{flex:1, height: 600}}>
-                  <Accordion dataArray={dataArray} renderContent={this._renderContent} />
-                  <Fab
-                    containerStyle={{ }}
-                    style={{ backgroundColor: '#5067FF' }}
-                    position="bottomRight"
-                    onPress={this.handleAdd}>
-                    <Icon name="ios-add" />
-                  </Fab>
-                </View>
-              </Content>
+          <Container style={{flex:1}}>
+            <Accordion dataArray={dataArray} renderContent={this._renderContent} />
+            <Fab
+              containerStyle={{ }}
+              position="bottomRight"
+              onPress={this._toggleModal}>
+              <Icon name="ios-add" />
+            </Fab>
+            <Modal isVisible={this.state.isModalVisible}>
+              <CreateScheduleCard onSubmit={this.handleAdditionSubmit} />
+            </Modal>
           </Container>
         )
         ;
