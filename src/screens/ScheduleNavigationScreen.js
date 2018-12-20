@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import { Container, Content, Accordion, Text, Button, Icon, Fab, Body, Card, CardItem } from "native-base";
-import {StyleSheet, View, Dimensions } from "react-native";
+import { Container, Accordion, Text, Button, Icon, Fab } from "native-base";
+import {StyleSheet, View } from "react-native";
+import { connect } from 'react-redux'
 import Modal from "react-native-modal";
 
 import { CreateScheduleCard } from '../components';
+import Actions from '../actions'
 
-const dataArray = [
-    { title: "First Element", content: "Lorem ipsum dolor sit amet" },
-    { title: "Second Element", content: "Lorem ipsum dolor sit amet" },
-    { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
-];
+const addScheduleAction = Actions.addScheduleAction;
+
+
 
 class ScheduleNavigationScreen extends Component {
     constructor(props) {
@@ -19,9 +19,9 @@ class ScheduleNavigationScreen extends Component {
       }
     }
 
-    handleAdditionSubmit = ({endDate, startDate, name, description }) => {
+    handleAdditionSubmit = (scheduleObject) => {
       this._toggleModal();
-      console.log(endDate, startDate, name, description)
+      this.props.onAddSchedule(scheduleObject);
     };
 
   _toggleModal = () => {
@@ -45,6 +45,8 @@ class ScheduleNavigationScreen extends Component {
       )};
 
     render() {
+        const { scheduleData } = this.props;
+        const dataArray = scheduleData.map(({ name, description }) => ({title: name, content: description}));
         return (
           <Container style={{flex:1}}>
             <Accordion dataArray={dataArray} renderContent={this._renderContent} />
@@ -73,4 +75,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScheduleNavigationScreen;
+export default connect(
+  state => ({
+    scheduleData: state.manageSchedules.schedules,
+  }),
+  dispatch => ({
+    onAddSchedule: (scheduleObject) => {dispatch(addScheduleAction(scheduleObject))},
+  })
+)(ScheduleNavigationScreen);

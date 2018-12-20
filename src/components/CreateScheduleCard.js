@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { Container, Text, Title, Header, Button, Body, Card, CardItem, Form, Label, Input, Item, DatePicker } from "native-base";
-import {StyleSheet, View, Dimensions } from "react-native";
-import { Actions } from 'react-native-router-flux';
-import Modal from "react-native-modal";
+import {StyleSheet, View } from "react-native";
 
 class CreateScheduleCard extends Component {
   constructor(props) {
@@ -24,10 +22,8 @@ class CreateScheduleCard extends Component {
   };
 
   handleSubmit = () => {
-    this.props.onSubmit({
-      ...this.state,
-    })
-  }
+    this.props.onSubmit(this.state)
+  };
 
   render() {
     return (
