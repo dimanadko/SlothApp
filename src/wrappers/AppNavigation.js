@@ -10,7 +10,7 @@ class AppNavigation extends Component{
         <Router>
           <Stack key="root">
             <Scene key="welcomeScreen" component={WelcomeScreen} hideNavBar/>
-            <Scene key="scheduleNavigationScreen" component={ScheduleNavigationScreen} title="ScheduleNavigationScreen" hideNavBar/>
+            <Scene key="scheduleNavigationScreen" component={ScheduleNavigationScreen} title="ScheduleNavigationScreen"/>
             <Scene key="scheduleFormScreen" component={ScheduleFormScreen} title="ScheduleFormScreen"/>
             <Scene key="taskFormScreen" component={TaskFormScreen} title="TaskFormScreen"/>
             <Scene key="scheduleScreen" component={ScheduleScreen} title="ScheduleScreen"/>

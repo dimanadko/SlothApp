@@ -53,11 +53,6 @@ class ScheduleNavigationScreen extends Component {
         const dataArray = Object.values(scheduleData).map(({ name, description }) => ({title: name, content: {name, description}}));
         return (
           <Container style={{flex:1}}>
-            <Header>
-              <Title>
-                ScheduleNavigationScreen
-              </Title>
-            </Header>
             <Accordion dataArray={dataArray} renderContent={this._renderContent} />
             <Fab
               containerStyle={{ }}
