@@ -6,6 +6,16 @@ const Actions = {
     };
     return(dispatchObj);
   },
+  addTaskAction: (
+    scheduleKey,
+    task ) => {
+    const dispatchObj = {
+      type: 'ADD_TASK',
+      data: task,
+      scheduleKey,
+    };
+    return(dispatchObj)
+  }
 };
 
 export default Actions;

@@ -50,7 +50,7 @@ class ScheduleNavigationScreen extends Component {
 
     render() {
         const { scheduleData } = this.props;
-        const dataArray = scheduleData.map(({ name, description }) => ({title: name, content: {name, description}}));
+        const dataArray = Object.values(scheduleData).map(({ name, description }) => ({title: name, content: {name, description}}));
         return (
           <Container style={{flex:1}}>
             <Header>
@@ -65,7 +65,7 @@ class ScheduleNavigationScreen extends Component {
               onPress={this._toggleModal}>
               <Icon name="ios-add" />
             </Fab>
-            <Modal isVisible={this.state.isModalVisible}>
+            <Modal isVisible={this.state.isModalVisible} onBackdropPress={this._toggleModal}>
               <CreateScheduleCard onSubmit={this.handleAdditionSubmit} />
             </Modal>
           </Container>
