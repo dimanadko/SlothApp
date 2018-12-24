@@ -37,12 +37,7 @@ class ScheduleScreen extends Component {
         <Text>{scheduleData.description}</Text>
         <Text>{scheduleData.releaseDate}</Text>
         <Text>{scheduleData.dueDate}</Text>
-        <GanttChart tasks={scheduleData.tasks}/>
-        {
-          scheduleData.tasks.map(({name, weight, dueDate, releaseDate, processingTime}) => (
-            <Text key={name+' '+title}>{name + ' - ' + weight}</Text>
-          ))
-        }
+        <GanttChart scheduleData={scheduleData}/>
         <Fab
           containerStyle={{ }}
           position="bottomRight"

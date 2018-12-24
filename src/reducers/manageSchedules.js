@@ -5,30 +5,37 @@ const initialState = {
     first_element:{
       name: "First Element",
       description: "Lorem ipsum dolor sit amet",
-      releaseDate: new Date(2018, 12, 20).toString(),
-      dueDate: new Date(2018, 12, 26).toString(),
+      releaseDate: new Date(2018, 11, 20).toString(),
+      dueDate: new Date(2018, 11, 26).toString(),
       tasks:[
         {
           name: 'Task one',
           weight: 20,
-          releaseDate: new Date(2018, 12, 20).toString(),
-          dueDate: new Date(2018, 12, 23).toString(),
-          processingTime: 2,
+          releaseDate: new Date(2018, 11, 21).toString(),
+          dueDate: new Date(2018, 11, 23).toString(),
+          processingTime: 1,
+        },
+        {
+          name: 'Task two',
+          weight: 20,
+          releaseDate: new Date(2018, 11, 24).toString(),
+          dueDate: new Date(2018, 11, 26).toString(),
+          processingTime: 1,
         }
       ]
     },
     second_element: {
       name: "Second Element",
       description: "Lorem ipsum dolor sit amet",
-      releaseDate: new Date(2018, 12, 21).toString(),
-      dueDate: new Date(2018, 12, 30).toString(),
+      releaseDate: new Date(2018, 11, 21).toString(),
+      dueDate: new Date(2018, 11, 30).toString(),
       tasks:[]
     },
     third_element: {
       name: "Third Element",
       description: "Lorem ipsum dolor sit amet",
-      releaseDate: new Date(2018, 12, 22).toString(),
-      dueDate: new Date(2018, 12, 27).toString(),
+      releaseDate: new Date(2018, 11, 22).toString(),
+      dueDate: new Date(2018, 11, 27).toString(),
       tasks:[]
     }
   },
