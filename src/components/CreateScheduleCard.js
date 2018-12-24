@@ -6,19 +6,19 @@ class CreateScheduleCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      endDate: new Date(),
-      startDate: new Date(),
+      dueDate: new Date(),
+      releaseDate: new Date(),
       name: '',
       description: '',
     };
   }
 
   setStartDate = (newDate)  => {
-    this.setState({ startDate: newDate });
+    this.setState({ releaseDate: newDate.toString() });
   };
 
   setEndDate = (newDate)  => {
-    this.setState({ endDate: newDate });
+    this.setState({ dueDate: newDate.toString() });
   };
 
   handleSubmit = () => {

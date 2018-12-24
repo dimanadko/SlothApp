@@ -4,7 +4,7 @@ import {Text, Title, Fab, Icon} from 'native-base';
 import { connect } from 'react-redux'
 import Modal from "react-native-modal";
 
-import { CreateTaskCard } from '../components'
+import { CreateTaskCard, GanttChart } from '../components'
 import Actions from '../actions'
 import { nameToKey } from '../helpers'
 
@@ -35,11 +35,12 @@ class ScheduleScreen extends Component {
     return (
       <View style={{flex:1}}>
         <Text>{scheduleData.description}</Text>
-        <Text>{scheduleData.startDate}</Text>
-        <Text>{scheduleData.endDate}</Text>
+        <Text>{scheduleData.releaseDate}</Text>
+        <Text>{scheduleData.dueDate}</Text>
+        <GanttChart tasks={scheduleData.tasks}/>
         {
-          scheduleData.tasks.map(({name, weight}) => (
-            <Text>{name + ' - ' + weight}</Text>
+          scheduleData.tasks.map(({name, weight, dueDate, releaseDate, processingTime}) => (
+            <Text key={name+' '+title}>{name + ' - ' + weight}</Text>
           ))
         }
         <Fab

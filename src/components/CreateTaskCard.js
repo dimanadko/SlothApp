@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Container, Header, Content, Card, CardItem, Body, Text, Button, Input, Item, DatePicker,} from 'native-base';
-import {View} from "react-native";
 class CreateTaskCard extends Component {
   constructor(props){
     super(props);
@@ -18,11 +17,11 @@ class CreateTaskCard extends Component {
   };
 
   setReleaseDate = (newDate)  => {
-    this.setState({ startDate: newDate });
+    this.setState({ startDate: newDate.toString() });
   };
 
   setDueDate = (newDate)  => {
-    this.setState({ endDate: newDate });
+    this.setState({ endDate: newDate.toString() });
   };
   
   render() {
