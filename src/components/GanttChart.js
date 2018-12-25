@@ -25,7 +25,7 @@ class GanttChart extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.chartContainer}>
-          {tasks.map(({name, weight, dueDate, releaseDate, processingTime}) => {
+          {tasks.map(({name, weight, dueDate, releaseDate, processingTime, startDate=false, endDate=false}) => {
             const taskDueDate = new Date(dueDate);
             const taskReleaseDate = new Date(releaseDate);
             const placeHolderStart = Math.round(((taskReleaseDate - scheduleReleaseDate)/scheduleLength)*100);
@@ -35,7 +35,7 @@ class GanttChart extends Component {
             return (
               <View key={name} style={{height: 50, flexDirection: 'row', backgroundColor: 'green'}}>
                 <View style={{flex:placeHolderStart}}/>
-                <View style={{backgroundColor: 'mistyrose', flex: placeHolderMain}}>
+                <View style={{backgroundColor: startDate?'blue':'mistyrose', flex: placeHolderMain}}>
                   <Text style={{textAlign: 'center', flex: 1}}>{name}</Text>
                 </View>
                 <View style={{flex:placeHolderEnd}}/>

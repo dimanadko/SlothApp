@@ -72,14 +72,41 @@ export default (state = initialState, action) => {
       const taskReleaseDate = new Date(releaseDate).getTime();
       const taskProcessingTime = day*processingTime;
 
-      // Alert.alert('taskArray', name+ ' '+taskDueDate+' '+' '+taskReleaseDate);
-
       const result = new Task( name, taskReleaseDate, taskDueDate, taskProcessingTime, weight );
       return result
     });
     const CurrentSchedule = new TaskList(taskArray);
+    const newTasks = weightedRetardMinim(CurrentSchedule, new Schedule()).tasks;
+    Alert.alert('Sort', JSON.stringify(newTasks));
 
-    Alert.alert('Sort', JSON.stringify(weightedRetardMinim(CurrentSchedule, new Schedule())))
+    const reduxableTasks = newTasks.map( ({name, weight, releaseDate, dueDate, processingTime, startDate, endDate}) => {
+      const strReleaseDate = new Date(releaseDate).toString();
+      const strDueDate = new Date(dueDate).toString();
+      const strStartDate = new Date(startDate).toString();
+      const strEndDate = new Date(endDate).toString();
+      const normProcessingTime = processingTime/day;
+      return {
+        name,
+        weight,
+        releaseDate: strReleaseDate,
+        dueDate: strDueDate,
+        processingTime: normProcessingTime,
+        startDate: strStartDate,
+        endDate: strEndDate
+      }
+    });
+
+    const curSchedule = state.schedules[action.data];
+
+    return {
+      schedules: {
+        ...state.schedules,
+        [action.data]: {
+          ...curSchedule,
+          tasks: reduxableTasks
+        }
+      }
+    };
   }
   return state;
 }
