@@ -64,13 +64,13 @@ class CreateTaskCard extends Component {
             <Item floatingLabel style={{flex: 1, alignItems: 'space-between'}}>
               <Input
                 placeholder="Weight"
-                onChangeText={(weight) => this.setState({weight})}
+                onChangeText={(weight) => this.setState({weight: Number(weight)})}
               />
             </Item>
             <Item floatingLabel style={{flex: 1, alignItems: 'space-between'}}>
               <Input
                 placeholder="Processing Time"
-                onChangeText={(processingTime) => this.setState({processingTime})}
+                onChangeText={(processingTime) => this.setState({processingTime: Number(processingTime)})}
               />
             </Item>
             <Button

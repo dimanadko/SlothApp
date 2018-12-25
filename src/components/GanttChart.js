@@ -28,15 +28,32 @@ class GanttChart extends Component {
           {tasks.map(({name, weight, dueDate, releaseDate, processingTime, startDate=false, endDate=false}) => {
             const taskDueDate = new Date(dueDate);
             const taskReleaseDate = new Date(releaseDate);
+
+            const taskLength = taskDueDate - taskReleaseDate;
+            const taskStartDate = startDate && new Date(startDate);
+            const taskEndDate = endDate && new Date(endDate);
+
             const placeHolderStart = Math.round(((taskReleaseDate - scheduleReleaseDate)/scheduleLength)*100);
             const placeHolderMain = Math.round(((taskDueDate - taskReleaseDate)/scheduleLength)*100);
             const placeHolderEnd = Math.round(((scheduleDueDate-taskDueDate)/scheduleLength)*100);
 
+            const innerPlaceHolderStart = startDate && Math.round(((taskStartDate - taskReleaseDate)/taskLength)*100);
+            const innerPlaceHolderMain = startDate && Math.round(((taskEndDate - taskStartDate)/taskLength)*100);
+            const innerPlaceHolderEnd = startDate && Math.round(((taskDueDate-taskEndDate)/taskLength)*100);
+
             return (
               <View key={name} style={{height: 50, flexDirection: 'row', backgroundColor: 'green'}}>
                 <View style={{flex:placeHolderStart}}/>
-                <View style={{backgroundColor: startDate?'blue':'mistyrose', flex: placeHolderMain}}>
-                  <Text style={{textAlign: 'center', flex: 1}}>{name}</Text>
+                <View style={{backgroundColor: 'mistyrose', flex: placeHolderMain, flexDirection: 'row'}}>
+                  { startDate && endDate ? (
+                    <>
+                      <View style={{flex:innerPlaceHolderStart}}/>
+                      <View style={{flex:innerPlaceHolderMain, backgroundColor: 'blue' }}/>
+                      <View style={{flex:innerPlaceHolderEnd}}/>
+                    </>
+                  ):
+                    <Text style={{textAlign: 'center', flex: 1}}>{name}</Text>
+                  }
                 </View>
                 <View style={{flex:placeHolderEnd}}/>
               </View>
