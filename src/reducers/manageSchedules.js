@@ -1,5 +1,9 @@
 import { nameToKey } from '../helpers'
 import { Alert } from 'react-native'
+import SlothModul from '../../SlothModule/sloth-schedule/sloth'
+
+const {retardMinim, Schedule, Task, TaskList, tasksCompability, weightedRetardMinim, tools } = SlothModul;
+const day = 60 * 60 * 24 * 1000;
 
 const initialState = {
   'schedules': {
@@ -43,9 +47,11 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+
   if (action.type === 'ADD_SCHEDULE') {
     return {schedules: {...state.schedules, [nameToKey(action.data.name)]: {...action.data, tasks: []} }};
   }
+
   if (action.type === 'ADD_TASK') {
     const curSchedule = state.schedules[action.scheduleKey];
     // Alert.alert(action.data.releaseDate+'');
@@ -59,8 +65,21 @@ export default (state = initialState, action) => {
       }
     };
   }
+
   if (action.type === 'SORT_SCHEDULE') {
-    Alert.alert('Sort', action.data)
+    const taskArray = state.schedules[action.data].tasks.map( ({name, dueDate, releaseDate, processingTime, weight}) => {
+      const taskDueDate = new Date(dueDate).getTime();
+      const taskReleaseDate = new Date(releaseDate).getTime();
+      const taskProcessingTime = day*processingTime;
+
+      // Alert.alert('taskArray', name+ ' '+taskDueDate+' '+' '+taskReleaseDate);
+
+      const result = new Task( name, taskReleaseDate, taskDueDate, taskProcessingTime, weight );
+      return result
+    });
+    const CurrentSchedule = new TaskList(taskArray);
+
+    Alert.alert('Sort', JSON.stringify(weightedRetardMinim(CurrentSchedule, new Schedule())))
   }
   return state;
 }

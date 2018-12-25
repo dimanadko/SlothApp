@@ -1,0 +1,56 @@
+{
+  "_from": "sloth-schedule",
+  "_id": "sloth-schedule@0.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-VgLZ72yzr+z6Gsag1jEo67Xx81NxwWPP4CSefs53xaWCYHlBicV0z5eQkdC9b3E8oto7Elsw6E0P7Sz5nqQZ6Q==",
+  "_location": "/sloth-schedule",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "sloth-schedule",
+    "name": "sloth-schedule",
+    "escapedName": "sloth-schedule",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/sloth-schedule/-/sloth-schedule-0.0.1.tgz",
+  "_shasum": "d4608a9adfc2b47076dab602206fd052eeea4fad",
+  "_spec": "sloth-schedule",
+  "_where": "/Users/dimanadko/Programing/ReactNativeApps/SlothApp",
+  "author": {
+    "name": "Dmitriy Mikhailov, Dmitriy Nadobko, Maksim Kuvichka"
+  },
+  "bugs": {
+    "url": "https://github.com/Tariod/sloth/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Scheduling Optimizatior",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "metatests": "^0.3.0"
+  },
+  "homepage": "https://github.com/Tariod/sloth#readme",
+  "keywords": [
+    "scheduling",
+    "job-shop problem"
+  ],
+  "license": "MIT",
+  "main": "./sloth.js",
+  "name": "sloth-schedule",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tariod/sloth.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "eslint . && metatests test/"
+  },
+  "version": "0.0.1"
+}

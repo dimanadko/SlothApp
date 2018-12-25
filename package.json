@@ -8,6 +8,7 @@
     "devtools": "react-devtools"
   },
   "dependencies": {
+    "es6-symbol": "^3.1.1",
     "native-base": "^2.8.2",
     "react": "16.6.3",
     "react-devtools": "^3.4.3",
@@ -17,7 +18,8 @@
     "react-native-svg": "^8.0.10",
     "react-native-swipe-gestures": "^1.0.3",
     "react-redux": "^6.0.0",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "sloth-schedule": "0.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
