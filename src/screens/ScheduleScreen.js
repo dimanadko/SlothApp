@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View } from 'react-native';
-import {Text, Title, Fab, Icon, Button} from 'native-base';
+import {Text, Title, Fab, Icon, Button, ActionSheet} from 'native-base';
 import { connect } from 'react-redux'
 import Modal from "react-native-modal";
 
@@ -10,6 +10,18 @@ import { nameToKey } from '../helpers'
 
 const addTaskAction = Actions.addTaskAction;
 const sortScheduleAction = Actions.sortScheduleAction;
+
+const BUTTONS = [
+  { text: "retardMinim" },
+  { text: "weightedRetardMinim"},
+  { text: "tasksCompability"},
+  { text: "Delete"},
+  { text: "Cancel"}
+];
+
+const CANCEL_INDEX = 4;
+const DESTRUCTIVE_INDEX = 3;
+
 
 class ScheduleScreen extends Component {
   constructor(props){
@@ -40,25 +52,27 @@ class ScheduleScreen extends Component {
     return (
       <View style={{flex:1}}>
         <Text style={{flex: 1, justifyContent: 'center'}} >{scheduleData.description}</Text>
-        <Text style={{flex: 1, justifyContent: 'center'}} >{scheduleData.releaseDate}</Text>
-        <Text style={{flex: 1, justifyContent: 'center'}} >{scheduleData.dueDate}</Text>
-        <View style={{flex: 16}}>
+        <View style={{flex: 12}}>
           <GanttChart scheduleData={scheduleData}/>
         </View>
-        <Fab
-          containerStyle={{ }}
-          position="bottomRight"
-          onPress={this._toggleModal}>
-          <Icon name="ios-add" />
-        </Fab>
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginBottom: 20}}>
-          <Button  onPress={this.handleSort(nameToKey(title))}>
+          <Button
+            onPress={
+              this.handleSort(nameToKey(title))
+            }
+          >
             <Text>Sort</Text>
           </Button>
         </View>
         <Modal isVisible={this.state.modalOpen} onBackdropPress={this._toggleModal}>
           <CreateTaskCard onSubmit={this.taskAddition(nameToKey(title))}/>
         </Modal>
+        <Fab
+          containerStyle={{ }}
+          position="bottomRight"
+          onPress={this._toggleModal}>
+          <Icon name="ios-add" />
+        </Fab>
       </View>
     )
       ;

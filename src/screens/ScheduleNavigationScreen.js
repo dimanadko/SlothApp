@@ -43,7 +43,7 @@ class ScheduleNavigationScreen extends Component {
             onPress={()=>Actions.scheduleScreen({ data: description, title: name })}
             style={{flex: 1, justifyContent: 'center'}}
           >
-            <Icon name='arrow-forward' />
+            <Icon name='ios-arrow-round-forward' />
           </Button>
         </View>
       )};

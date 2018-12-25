@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Scene, Router, Stack } from 'react-native-router-flux';
 
-import {WelcomeScreen, ScheduleNavigationScreen, ScheduleFormScreen, TaskFormScreen, ScheduleScreen} from '../screens'
+import {WelcomeScreen, ScheduleNavigationScreen, ScheduleScreen} from '../screens'
 
 
 class AppNavigation extends Component{
@@ -11,8 +11,6 @@ class AppNavigation extends Component{
           <Stack key="root">
             <Scene key="welcomeScreen" component={WelcomeScreen} hideNavBar/>
             <Scene key="scheduleNavigationScreen" component={ScheduleNavigationScreen} title="ScheduleNavigationScreen"/>
-            <Scene key="scheduleFormScreen" component={ScheduleFormScreen} title="ScheduleFormScreen"/>
-            <Scene key="taskFormScreen" component={TaskFormScreen} title="TaskFormScreen"/>
             <Scene key="scheduleScreen" component={ScheduleScreen} title="ScheduleScreen"/>
           </Stack>
         </Router>

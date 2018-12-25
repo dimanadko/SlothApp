@@ -14,11 +14,9 @@ class GanttChart extends Component {
     const {tasks, releaseDate, dueDate} = scheduleData;
     const scheduleReleaseDate = new Date(releaseDate);
     const scheduleDueDate = new Date(dueDate);
-    // Alert.alert((scheduleReleaseDate instanceof Date) + '');
     const scheduleLength = scheduleDueDate - scheduleReleaseDate;
 
     const days = Math.floor((scheduleDueDate - scheduleReleaseDate) / day);
-    // Alert.alert(days);
     this.daysArray = Array.from({length: days}, (v, k) => k+1);
 
 
@@ -42,17 +40,26 @@ class GanttChart extends Component {
             const innerPlaceHolderEnd = startDate && Math.round(((taskDueDate-taskEndDate)/taskLength)*100);
 
             return (
-              <View key={name} style={{height: 50, flexDirection: 'row', backgroundColor: 'green'}}>
+              <View key={name} style={{height: 50, flexDirection: 'row', borderTopColor: 'darkgrey', borderTopWidth: 1}}>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    width: 40, fontSize: 10,
+                    borderRightColor: 'darkgrey',
+                    borderRightWidth: 1,
+                    backgroundColor: 'lightgrey'
+                  }}>{name}</Text>
                 <View style={{flex:placeHolderStart}}/>
-                <View style={{backgroundColor: 'mistyrose', flex: placeHolderMain, flexDirection: 'row'}}>
+                <View style={{borderColor: 'coral', borderStyle: 'dashed', borderWidth: 1, flex: placeHolderMain, flexDirection: 'row'}}>
                   { startDate && endDate ? (
                     <>
                       <View style={{flex:innerPlaceHolderStart}}/>
-                      <View style={{flex:innerPlaceHolderMain, backgroundColor: 'blue' }}/>
+                      <View style={{flex:innerPlaceHolderMain, backgroundColor: 'mistyrose' }}/>
                       <View style={{flex:innerPlaceHolderEnd}}/>
                     </>
                   ):
-                    <Text style={{textAlign: 'center', flex: 1}}>{name}</Text>
+                    <>
+                    </>
                   }
                 </View>
                 <View style={{flex:placeHolderEnd}}/>
@@ -63,6 +70,7 @@ class GanttChart extends Component {
         <View style={styles.timeline}>
           <View style={{flex: 1, borderBottomWidth: 1, borderBottomColor: 'lightgrey'}}/>
           <View style={styles.timelineLabelContainer}>
+            <Text style={{width: 40}}>Date</Text>
             {this.daysArray.map((el, index) => {
               return (
                 <Text style={{flex: 1}} key={el}>
@@ -90,7 +98,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: 'green',
   },
   timeline: {
     height: 30,

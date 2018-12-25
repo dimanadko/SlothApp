@@ -54,7 +54,6 @@ export default (state = initialState, action) => {
 
   if (action.type === 'ADD_TASK') {
     const curSchedule = state.schedules[action.scheduleKey];
-    // Alert.alert(action.data.releaseDate+'');
     return {
       schedules: {
         ...state.schedules,
@@ -77,7 +76,6 @@ export default (state = initialState, action) => {
     });
     const CurrentSchedule = new TaskList(taskArray);
     const newTasks = weightedRetardMinim(CurrentSchedule, new Schedule()).tasks;
-    Alert.alert('Sort', JSON.stringify(newTasks));
 
     const reduxableTasks = newTasks.map( ({name, weight, releaseDate, dueDate, processingTime, startDate, endDate}) => {
       const strReleaseDate = new Date(releaseDate).toString();
