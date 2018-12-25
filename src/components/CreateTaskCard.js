@@ -18,11 +18,11 @@ class CreateTaskCard extends Component {
   };
 
   setReleaseDate = (newDate)  => {
-    this.setState({ startDate: newDate.toString() });
+    this.setState({ releaseDate: new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), 0, 0, 0).toString() });
   };
 
   setDueDate = (newDate)  => {
-    this.setState({ endDate: newDate.toString() });
+    this.setState({ dueDate: new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), 0, 0, 0).toString() });
   };
   
   render() {

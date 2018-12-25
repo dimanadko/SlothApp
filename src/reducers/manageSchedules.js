@@ -1,4 +1,5 @@
 import { nameToKey } from '../helpers'
+import { Alert } from 'react-native'
 
 const initialState = {
   'schedules': {
@@ -47,6 +48,7 @@ export default (state = initialState, action) => {
   }
   if (action.type === 'ADD_TASK') {
     const curSchedule = state.schedules[action.scheduleKey];
+    // Alert.alert(action.data.releaseDate+'');
     return {
       schedules: {
         ...state.schedules,
@@ -56,6 +58,9 @@ export default (state = initialState, action) => {
         }
       }
     };
+  }
+  if (action.type === 'SORT_SCHEDULE') {
+    Alert.alert('Sort', action.data)
   }
   return state;
 }

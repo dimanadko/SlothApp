@@ -15,7 +15,13 @@ const Actions = {
       scheduleKey,
     };
     return(dispatchObj)
-  }
+  },
+  sortScheduleAction: (
+    scheduleKey
+  ) => ({
+    type: 'SORT_SCHEDULE',
+    data: scheduleKey
+  })
 };
 
 export default Actions;

@@ -26,8 +26,8 @@ class GanttChart extends Component {
       <View style={styles.container}>
         <View style={styles.chartContainer}>
           {tasks.map(({name, weight, dueDate, releaseDate, processingTime}) => {
-            const taskDueDate = Date.parse(dueDate);
-            const taskReleaseDate = Date.parse(releaseDate);
+            const taskDueDate = new Date(dueDate);
+            const taskReleaseDate = new Date(releaseDate);
             const placeHolderStart = Math.round(((taskReleaseDate - scheduleReleaseDate)/scheduleLength)*100);
             const placeHolderMain = Math.round(((taskDueDate - taskReleaseDate)/scheduleLength)*100);
             const placeHolderEnd = Math.round(((scheduleDueDate-taskDueDate)/scheduleLength)*100);
@@ -36,7 +36,7 @@ class GanttChart extends Component {
               <View key={name} style={{height: 50, flexDirection: 'row', backgroundColor: 'green'}}>
                 <View style={{flex:placeHolderStart}}/>
                 <View style={{backgroundColor: 'mistyrose', flex: placeHolderMain}}>
-                  <Text style={{textAlign: 'center', overflow: 'hidden'}}>{name}</Text>
+                  <Text style={{textAlign: 'center', flex: 1}}>{name}</Text>
                 </View>
                 <View style={{flex:placeHolderEnd}}/>
               </View>
@@ -46,10 +46,10 @@ class GanttChart extends Component {
         <View style={styles.timeline}>
           <View style={{flex: 1, borderBottomWidth: 1, borderBottomColor: 'lightgrey'}}/>
           <View style={styles.timelineLabelContainer}>
-            {this.daysArray.map((el) => {
+            {this.daysArray.map((el, index) => {
               return (
                 <Text style={{flex: 1}} key={el}>
-                  {(scheduleReleaseDate.getDate() + el) + '.' + (scheduleReleaseDate.getMonth() + 1)}
+                  {(scheduleReleaseDate.getDate() + index) + '.' + (scheduleReleaseDate.getMonth() + 1)}
                 </Text>
               )})
             }

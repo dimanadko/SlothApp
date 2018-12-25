@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Container, Text, Title, Header, Button, Body, Card, CardItem, Form, Label, Input, Item, DatePicker } from "native-base";
-import {StyleSheet, View } from "react-native";
+import {StyleSheet, View, Alert } from "react-native";
 
 class CreateScheduleCard extends Component {
   constructor(props) {
